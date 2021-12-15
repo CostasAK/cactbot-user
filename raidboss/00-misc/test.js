@@ -35,18 +35,19 @@ Options.Triggers = Options.Triggers.concat([{
 
 // eslint-disable-next-line no-undef
 Object.assign(Options.PerTriggerOptions, {
-  'Test Poke': {
+  "Test Poke": {
     SpeechAlert: false,
     SoundAlert: true,
     TextAlert: false,
     // Override the tts output as well.
     TTSText: function (data) {
-      return 'Custom Poke (' + data.pokes + ')'
+      return "Custom Poke (" + data.pokes + ")";
     },
-    SoundOverride: 'C:/Program Files (x86)/Advanced Combat Tracker/Hojoring/resources/wav/Agro.wav'
+    SoundOverride:
+      "C:/Program Files (x86)/Advanced Combat Tracker/Hojoring/resources/wav/Agro.wav",
   },
 
-  'Double Test': {
-    SpeechAlert: true
-  }
-})
+  // 'Double Test': {
+  //   SpeechAlert: true
+  // }
+});

@@ -57,7 +57,7 @@ Options.Triggers = Options.Triggers.concat([{
     ### Tank Stuff
     685 "T2 MT"
     380 "T2 MT"
-    484 "T2 MT"
+    #482 "T2 MT"
     492 "Tank Swap"
 
     ### Reminders
@@ -107,7 +107,7 @@ Options.Triggers = Options.Triggers.concat([{
     }),
     delaySeconds: 43,
     durationSeconds: 10,
-    suppressSeconds: 80
+    suppressSeconds: 120
   },
   {
     id: 'E8S Axe Kick Help',
@@ -117,9 +117,9 @@ Options.Triggers = Options.Triggers.concat([{
       id: '4D6D',
       capture: false
     }),
-    delaySeconds: 50,
+    delaySeconds: 49,
     durationSeconds: 10,
-    suppressSeconds: 93
+    suppressSeconds: 160
   },
   {
     id: 'E8S Scythe Kick Help',
@@ -129,8 +129,9 @@ Options.Triggers = Options.Triggers.concat([{
       id: '4D6E',
       capture: false
     }),
-    delaySeconds: 50,
-    suppressSeconds: 93
+    delaySeconds: 49,
+    durationSeconds: 10,
+    suppressSeconds: 160
   },
   {
     id: 'E8S LR Chain on Tannie',
@@ -179,6 +180,22 @@ Options.Triggers = Options.Triggers.concat([{
     run: function (data) {
       data.clawedGust = true
     }
+  },
+  {
+    id: 'E8S WL Red on Shiroe',
+    regex: /Shiroe Enchanter gains the effect of Wyrmclaw/,
+    suppressSeconds: 3,
+    run: function (data) {
+      data.clawedShiroe = true
+    }
+  },
+  {
+    id: 'E8S WL Red on Yuki',
+    regex: /Yuki Kimura gains the effect of Wyrmclaw/,
+    suppressSeconds: 3,
+    run: function (data) {
+      data.clawedYuki = true
+    }
   }
   ]
 }])
@@ -186,16 +203,16 @@ Options.Triggers = Options.Triggers.concat([{
 // eslint-disable-next-line no-undef
 Object.assign(Options.PerTriggerOptions, {
   'E8S Biting Frost First Mirror': {
-    SpeechAlert: true
+    SpeechAlert: false
   },
   'E8S Driving Frost First Mirror': {
-    SpeechAlert: true
+    SpeechAlert: false
   },
   'E8S Icicle Impact': {
     SpeechAlert: true
   },
   'E8S Double Slap': {
-    SpeechAlert: true
+    SpeechAlert: false
   },
   'E8S Axe Kick': {
     SpeechAlert: true
@@ -220,16 +237,28 @@ Object.assign(Options.PerTriggerOptions, {
   },
   'E8S Axe Kick Help': {
     SpeechAlert: true,
-    AlertText: 'Take Boss to North Mirror'
+    AlertText: function (data) {
+      if (data.firstKick) {
+        return ''
+      }
+      data.firstKick = true
+      return 'Take Boss to North Mirror'
+    }
   },
   'E8S Scythe Kick Help': {
     SpeechAlert: true,
-    AlertText: 'Keep Boss in the Centre'
+    AlertText: function (data) {
+      if (data.firstKick) {
+        return ''
+      }
+      data.firstKick = true
+      return 'Keep Boss in the Centre'
+    }
   },
   'E8S OT Help': {
     SpeechAlert: true,
     AlertText: function (data) {
-      return data.slapped + ' Off-Tank'
+      return data.ShortName(data.slapped) + ' Off-Tank'
     }
   },
   'E8S Akh Rai Reminder': {
@@ -276,7 +305,7 @@ Object.assign(Options.PerTriggerOptions, {
     SpeechAlert: true,
     AlertText: function (data) {
       if (data.clawedGust) {
-        return 'Gust Shiroe Swap'
+        return 'Gust Shihro Swap'
       }
     }
   },
@@ -284,7 +313,23 @@ Object.assign(Options.PerTriggerOptions, {
     SpeechAlert: true,
     AlertText: function (data) {
       if (data.clawedTannie) {
-        return 'Gust Shiroe Swap'
+        return 'Gust Shihro Swap'
+      }
+    }
+  },
+  'E8S WL Red on Shiroe': {
+    SpeechAlert: true,
+    AlertText: function (data) {
+      if (data.clawedYuki) {
+        return 'Gust Shihro Swap'
+      }
+    }
+  },
+  'E8S WL Red on Yuki': {
+    SpeechAlert: true,
+    AlertText: function (data) {
+      if (data.clawedShiroe) {
+        return 'Gust Shihro Swap'
       }
     }
   }
