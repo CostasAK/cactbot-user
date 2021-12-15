@@ -1,2 +1,10 @@
 README.txt
 *-example.js
+wav/_*.wav
+wav/alarm.wav
+wav/mute.wav
+wav/onepoint*.wav
+wav/Sasara*.wav
+wav/system*.wav
+# temporary, until I find storage solution
+wav/*
