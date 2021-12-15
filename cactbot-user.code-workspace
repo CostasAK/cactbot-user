@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "..\\ui\\raidboss\\data"
+    }
+  ],
+  "settings": {
+    "terminal.integrated.cwd": "",
+  }
+}
