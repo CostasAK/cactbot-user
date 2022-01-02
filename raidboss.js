@@ -31,4 +31,5 @@ Options.PlayerNicks = {
   "Know Thyself": "Pete",
   "Krato Nightwhisper": "Kraato",
   "Seuny Hena": "Sunny",
+  "Kali Sunfeather": "Kali",
 };
