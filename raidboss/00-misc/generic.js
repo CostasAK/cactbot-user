@@ -32,14 +32,22 @@ const ready_check_sounds = [
     ],
   },
 ];
-ready_check_sounds.map(
-  (sound_set) =>
-    (sound_set.chance = Math.max(
-      sound_set.fail.length,
-      sound_set.success.length
-    ))
-);
-var ready_check_set = Math.floor(Math.random() * ready_check_sounds.length);
+
+var ready_check_chances = [];
+for (let i = 0; i < ready_check_sounds.length; i++) {
+  ready_check_chances.push(
+    Array(
+      Math.max(
+        ready_check_sounds[i].fail.length,
+        ready_check_sounds[i].success.length
+      )
+    ).fill(i)
+  );
+}
+
+const new_ready_check_set = () =>
+  ready_check_chances[Math.floor(Math.random() * ready_check_chances.length)];
+var ready_check_set = new_ready_check_set();
 
 Options.Triggers.push({
   zoneRegex: /.*/,
@@ -69,10 +77,7 @@ Options.Triggers.push({
           )
         ] +
         ".wav",
-      run: () =>
-        (ready_check_set = Math.floor(
-          Math.random() * ready_check_sounds.length
-        )),
+      run: () => (ready_check_set = new_ready_check_set()),
     },
     {
       id: "Ready Check Fail",
@@ -86,10 +91,7 @@ Options.Triggers.push({
           )
         ] +
         ".wav",
-      run: () =>
-        (ready_check_set = Math.floor(
-          Math.random() * ready_check_sounds.length
-        )),
+      run: () => (ready_check_set = new_ready_check_set()),
     },
     {
       id: "Charybdis",
