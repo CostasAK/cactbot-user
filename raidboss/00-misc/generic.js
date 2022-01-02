@@ -91,6 +91,19 @@ Options.Triggers.push({
           Math.random() * ready_check_sounds.length
         )),
     },
+    {
+      id: "Charybdis",
+      regex:
+        /^.{15}[A-Za-z]* 14:[\dA-F]{2,5}:(?:[ -9;-~èéêîïôàæûç]{1,99}) starts using (?:Charybdis|Terror Unleashed)/,
+      sound: "../../user/wav/FH-Healthbars-Short.wav",
+    },
+    {
+      id: "Damage Down",
+      regex:
+        /^.{15}1A:10.{6}:(?<victim>[A-z' -]{3,21}) gains the effect of Damage Down/,
+      condition: (_, matches) => data.party.inParty(matches.victim),
+      sound: "../../user/wav/roblox-death-sound.wav",
+    },
   ],
 });
 
@@ -102,6 +115,12 @@ Object.assign(Options.PerTriggerOptions, {
     SoundAlert: true,
   },
   "Ready Check Fail": {
+    SoundAlert: true,
+  },
+  Charybdis: {
+    SoundAlert: true,
+  },
+  "Damage Down": {
     SoundAlert: true,
   },
 });
