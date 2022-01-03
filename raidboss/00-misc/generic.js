@@ -92,7 +92,7 @@ Options.Triggers.push({
       id: "Damage Down",
       regex:
         /^.{15}1A:10.{6}:(?<victim>[A-z' -]{3,21}) gains the effect of Damage Down/,
-      condition: (_, matches) => data.party.inParty(matches.victim),
+      condition: (_, matches, _) => data.party.inParty(matches.victim),
       sound: "../../user/wav/roblox-death-sound.wav",
     },
   ],
