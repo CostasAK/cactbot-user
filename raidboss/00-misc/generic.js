@@ -35,7 +35,7 @@ const generic_ready_check_sounds = [
 
 var generic_ready_check_chances = [];
 for (let i = 0; i < generic_ready_check_sounds.length; i++) {
-  generic_ready_check_chances.push(
+  generic_ready_check_chances = generic_ready_check_chances.concat(
     Array(
       Math.max(
         generic_ready_check_sounds[i].fail.length,
@@ -98,8 +98,9 @@ Options.Triggers.push({
     {
       id: "Damage Down",
       regex:
-        /^.{15}1A:10.{6}:(?<victim>[A-z' -]{3,21}) gains the effect of Damage Down/,
-      condition: (_, matches) => data.party.inParty(matches.victim),
+        /^.{15}StatusAdd 1A:(?:(?:[^:]*)):(?:Damage Down|Vulnerability Up|Paralysis):(?:(?:[^:]*)):(?:(?:[^:]*)):(?:(?:[^:]*)):(?:(?:[^:]*)):(?<target>(?:[^:]*))/,
+      condition: (data, matches) => data.party.inParty(matches.target),
+      suppressSeconds: 1,
       sound: "../../user/wav/roblox-death-sound.wav",
     },
   ],
