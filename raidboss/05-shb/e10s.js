@@ -1,11 +1,9 @@
 'use strict'
 
-// eslint-disable-next-line no-undef
-Options.Triggers = Options.Triggers.concat([
-  {
-    zoneRegex: /^Eden's Promise: Litany \(Savage\)$/,
+Options.Triggers.push({
+  zoneRegex: /^Eden's Promise: Litany \(Savage\)$/,
 
-    timeline: `
+  timeline: `
       ### Party Mitigation
       89 "R2 Mitigation"
       227 "R2 Mitigation"
@@ -22,6 +20,5 @@ Options.Triggers = Options.Triggers.concat([
       526 "T2 Mitigation"
       604 "T1 Mitigation"
       650 "T2 Mitigation"
-    `
-  }
-])
+    `,
+});

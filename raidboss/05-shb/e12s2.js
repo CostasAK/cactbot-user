@@ -40,7 +40,6 @@ const isMelee = (party, name) => {
   });
 };
 
-// eslint-disable-next-line no-undef
 Options.Triggers.push({
   zoneId: ZoneId.EdensPromiseEternitySavage,
 
@@ -124,7 +123,6 @@ Options.Triggers.push({
   ],
 });
 
-// eslint-disable-next-line no-undef
 Object.assign(Options.PerTriggerOptions, {
   "E12S Basic Relativity Yellow Hourglass": {
     SpeechAlert: cleared,

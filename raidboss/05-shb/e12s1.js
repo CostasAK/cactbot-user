@@ -9,12 +9,10 @@ const getMarkIdE12S1 = (data, matches) => {
     .padStart(4, "0");
 };
 
-// eslint-disable-next-line no-undef
-Options.Triggers = Options.Triggers.concat([
-  {
-    zoneRegex: /^Eden's Promise: Eternity \(Savage\)$/,
+Options.Triggers.push({
+  zoneRegex: /^Eden's Promise: Eternity \(Savage\)$/,
 
-    timeline: `
+  timeline: `
       ### My Cooldowns
       ### Party Mitigation
       1 "R2 Mitigation"
@@ -48,77 +46,73 @@ Options.Triggers = Options.Triggers.concat([
       425 "T2 Mitigation"
     `,
 
-    triggers: [
-      {
-        // Headmarkers are randomized, so use a generic headMarker regex with no criteria.
-        id: "E12S1 Blue Bombs",
-        netRegex: NetRegexes.headMarker({}),
-        condition: (data) => data.isDoorBoss,
-        tts: (data, matches) => {
-          const mark_id = getMarkIdE12S1(data, matches);
-          data.seenSecondBombs = data.seenSecondBombs || false;
+  triggers: [
+    {
+      // Headmarkers are randomized, so use a generic headMarker regex with no criteria.
+      id: "E12S1 Blue Bombs",
+      netRegex: NetRegexes.headMarker({}),
+      condition: (data) => data.isDoorBoss,
+      tts: (data, matches) => {
+        const mark_id = getMarkIdE12S1(data, matches);
+        data.seenSecondBombs = data.seenSecondBombs || false;
 
-          if (
-            mark_id === "00BB" &&
-            data.seenFirstBombs &&
-            !data.seenSecondBombs
-          ) {
-            data.blueTargets = data.blueTargets || [];
-            data.blueTargets.push(matches.target);
+        if (
+          mark_id === "00BB" &&
+          data.seenFirstBombs &&
+          !data.seenSecondBombs
+        ) {
+          data.blueTargets = data.blueTargets || [];
+          data.blueTargets.push(matches.target);
 
-            // Handle double blue titan on 2nd iteration.
+          // Handle double blue titan on 2nd iteration.
+          if (data.blueTargets.length === 2 && !data.seenSecondBombs) {
+            data.seenSecondBombs = true;
+
+            const priorityList = [
+              "Tymo Aimali",
+              "Ahmed Sins",
+              "Gust Leonard",
+              "Tali Lamora",
+              "Shiroe Enchanter",
+              "Yuki Kimura",
+              "Tannie Kleinvoetjies",
+              "Marielle Maru",
+            ];
+
             if (
-              data.blueTargets.length === 2 &&
-              !data.seenSecondBombs
+              priorityList.indexOf(data.blueTargets[0]) <
+              priorityList.indexOf(data.blueTargets[1])
             ) {
-              data.seenSecondBombs = true;
-              
-              const priorityList = [
-                "Tymo Aimali",
-                "Ahmed Sins",
-                "Gust Leonard",
-                "Tali Lamora",
-                "Shiroe Enchanter",
-                "Yuki Kimura",
-                "Tannie Kleinvoetjies",
-                "Marielle Maru",
-              ];
-
-              if (
-                priorityList.indexOf(data.blueTargets[0]) <
-                priorityList.indexOf(data.blueTargets[1])
-              ) {
-                return (
-                  data.ShortName(data.blueTargets[0]) +
-                  " North, " +
-                  data.ShortName(data.blueTargets[1]) +
-                  " South"
-                );
-              }
               return (
-                data.ShortName(data.blueTargets[1]) +
-                " North, " +
                 data.ShortName(data.blueTargets[0]) +
+                " North, " +
+                data.ShortName(data.blueTargets[1]) +
                 " South"
               );
             }
+            return (
+              data.ShortName(data.blueTargets[1]) +
+              " North, " +
+              data.ShortName(data.blueTargets[0]) +
+              " South"
+            );
           }
-        },
+        }
       },
-      {
-        id: "E12S1 Weight Cleanup",
-        netRegex: NetRegexes.startsUsing({
-          source: "Eden's Promise",
-          id: "58A5",
-          capture: false,
-        }),
-        run: (data) => {
-          delete data.blueTargets;
-        },
+    },
+    {
+      id: "E12S1 Weight Cleanup",
+      netRegex: NetRegexes.startsUsing({
+        source: "Eden's Promise",
+        id: "58A5",
+        capture: false,
+      }),
+      run: (data) => {
+        delete data.blueTargets;
       },
-    ],
-  },
-]);
+    },
+  ],
+});
 
 Object.assign(Options.PerTriggerOptions, {
   "E12S Promise Cast Release": {

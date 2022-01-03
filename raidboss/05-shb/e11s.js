@@ -1,11 +1,9 @@
 'use strict'
 
-// eslint-disable-next-line no-undef
-Options.Triggers = Options.Triggers.concat([
-  {
-    zoneRegex: /^Eden's Promise: Anamorphosis \(Savage\)$/,
+Options.Triggers.push({
+  zoneRegex: /^Eden's Promise: Anamorphosis \(Savage\)$/,
 
-    timeline: `
+  timeline: `
       ### My Cooldowns
       45 "H1 Sacred Soil"
       65 "H1 Whispering Dawn"
@@ -48,6 +46,5 @@ Options.Triggers = Options.Triggers.concat([
       450 "T1 Mitigation"
       535 "T2 Mitigation"
       550 "T1 Mitigation"
-    `
-  }
-])
+    `,
+});
