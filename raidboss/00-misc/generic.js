@@ -1,6 +1,6 @@
 "use strict";
 
-const ready_check_sounds = [
+const generic_ready_check_sounds = [
   {
     initiate: ["RKelly - My Mind Is Telling Me No"],
     fail: ["RKelly - But My Body Is Telling Me Hell No"],
@@ -33,22 +33,23 @@ const ready_check_sounds = [
   },
 ];
 
-var ready_check_chances = [];
-for (let i = 0; i < ready_check_sounds.length; i++) {
-  ready_check_chances.push(
+var generic_ready_check_chances = [];
+for (let i = 0; i < generic_ready_check_sounds.length; i++) {
+  generic_ready_check_chances.push(
     Array(
       Math.max(
-        ready_check_sounds[i].fail.length,
-        ready_check_sounds[i].success.length
+        generic_ready_check_sounds[i].fail.length,
+        generic_ready_check_sounds[i].success.length
       )
     ).fill(i)
   );
 }
 
-const random_array_element = (array) =>
-  array[Math.floor(Math.random() * array.length)];
-const new_ready_check_set = () => random_array_element(ready_check_chances);
-var ready_check_set = new_ready_check_set();
+const generic_random_array_element = (arr) =>
+  arr[Math.floor(Math.random() * arr.length)];
+const generic_new_ready_check_set = () =>
+  generic_random_array_element(generic_ready_check_chances);
+var generic_ready_check_set = generic_new_ready_check_set();
 
 Options.Triggers.push({
   zoneRegex: /.*/,
@@ -59,7 +60,9 @@ Options.Triggers.push({
         /^.{15}ChatLog 00:0.{2}9:+[A-z' -]{3,21} ha(?:s|ve) (?:commenc|initiat)ed a ready check\.$/,
       sound: () =>
         "../../user/wav/" +
-        random_array_element(ready_check_sounds[ready_check_set].initiate) +
+        generic_random_array_element(
+          generic_ready_check_sounds[generic_ready_check_set].initiate
+        ) +
         ".wav",
     },
     {
@@ -68,9 +71,11 @@ Options.Triggers.push({
         /^.{15}ChatLog 00:0039::?Ready check complete\. Ready: \d{1,2}\/\d{1,2} Not Ready: 0/,
       sound: () =>
         "../../user/wav/" +
-        random_array_element(ready_check_sounds[ready_check_set].success) +
+        generic_random_array_element(
+          generic_ready_check_sounds[generic_ready_check_set].success
+        ) +
         ".wav",
-      run: () => (ready_check_set = new_ready_check_set()),
+      run: () => (generic_ready_check_set = generic_new_ready_check_set()),
     },
     {
       id: "Ready Check Fail",
@@ -78,9 +83,11 @@ Options.Triggers.push({
         /^.{15}ChatLog 00:0039::?Ready check complete\. Ready: \d{1,2}\/\d{1,2} Not Ready: [1-9]/,
       sound: () =>
         "../../user/wav/" +
-        random_array_element(ready_check_sounds[ready_check_set].fail) +
+        generic_random_array_element(
+          generic_ready_check_sounds[generic_ready_check_set].fail
+        ) +
         ".wav",
-      run: () => (ready_check_set = new_ready_check_set()),
+      run: () => (generic_ready_check_set = generic_new_ready_check_set()),
     },
     {
       id: "Charybdis",
@@ -92,7 +99,7 @@ Options.Triggers.push({
       id: "Damage Down",
       regex:
         /^.{15}1A:10.{6}:(?<victim>[A-z' -]{3,21}) gains the effect of Damage Down/,
-      condition: (_, matches, _) => data.party.inParty(matches.victim),
+      condition: (_, matches) => data.party.inParty(matches.victim),
       sound: "../../user/wav/roblox-death-sound.wav",
     },
   ],
