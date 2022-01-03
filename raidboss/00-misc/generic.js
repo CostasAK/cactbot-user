@@ -45,8 +45,9 @@ for (let i = 0; i < ready_check_sounds.length; i++) {
   );
 }
 
-const new_ready_check_set = () =>
-  ready_check_chances[Math.floor(Math.random() * ready_check_chances.length)];
+const random_array_element = (array) =>
+  array[Math.floor(Math.random() * array.length)];
+const new_ready_check_set = () => random_array_element(ready_check_chances);
 var ready_check_set = new_ready_check_set();
 
 Options.Triggers.push({
@@ -58,11 +59,7 @@ Options.Triggers.push({
         /^.{15}ChatLog 00:0.{2}9:+[A-z' -]{3,21} ha(?:s|ve) (?:commenc|initiat)ed a ready check\.$/,
       sound: () =>
         "../../user/wav/" +
-        ready_check_sounds[ready_check_set].initiate[
-          Math.floor(
-            Math.random() * ready_check_sounds[ready_check_set].initiate.length
-          )
-        ] +
+        random_array_element(ready_check_sounds[ready_check_set].initiate) +
         ".wav",
     },
     {
@@ -71,11 +68,7 @@ Options.Triggers.push({
         /^.{15}ChatLog 00:0039::?Ready check complete\. Ready: \d{1,2}\/\d{1,2} Not Ready: 0/,
       sound: () =>
         "../../user/wav/" +
-        ready_check_sounds[ready_check_set].success[
-          Math.floor(
-            Math.random() * ready_check_sounds[ready_check_set].success.length
-          )
-        ] +
+        random_array_element(ready_check_sounds[ready_check_set].success) +
         ".wav",
       run: () => (ready_check_set = new_ready_check_set()),
     },
@@ -85,11 +78,7 @@ Options.Triggers.push({
         /^.{15}ChatLog 00:0039::?Ready check complete\. Ready: \d{1,2}\/\d{1,2} Not Ready: [1-9]/,
       sound: () =>
         "../../user/wav/" +
-        ready_check_sounds[ready_check_set].fail[
-          Math.floor(
-            Math.random() * ready_check_sounds[ready_check_set].fail.length
-          )
-        ] +
+        random_array_element(ready_check_sounds[ready_check_set].fail) +
         ".wav",
       run: () => (ready_check_set = new_ready_check_set()),
     },
