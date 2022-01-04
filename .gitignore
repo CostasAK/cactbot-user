@@ -1,5 +1,6 @@
 README.txt
 *-example.js
+test-override.txt
 wav/_*.wav
 wav/alarm.wav
 wav/mute.wav
