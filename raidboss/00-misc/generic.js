@@ -56,8 +56,11 @@ Options.Triggers.push({
   triggers: [
     {
       id: "Ready Check Initiate",
-      regex:
-        /^.{15}ChatLog 00:0.{2}9:+[A-z' -]{3,21} ha(?:s|ve) (?:commenc|initiat)ed a ready check\.$/,
+      type: "GameLog",
+      netRegex: NetRegexes.gameLog({
+        line: "(?:\\y{Name} has initiated|You have commenced) a ready check\\..*?",
+        capture: false,
+      }),
       sound: () =>
         "../../user/wav/" +
         generic_random_array_element(
@@ -67,8 +70,11 @@ Options.Triggers.push({
     },
     {
       id: "Ready Check Success",
-      regex:
-        /^.{15}ChatLog 00:0039::?Ready check complete\. Ready: \d{1,2}\/\d{1,2} Not Ready: 0/,
+      type: "GameLog",
+      netRegex: NetRegexes.gameLog({
+        line: "Ready check complete\\. Ready: \\d{1,2}\\/\\d{1,2} Not Ready: 0.*?",
+        capture: false,
+      }),
       sound: () =>
         "../../user/wav/" +
         generic_random_array_element(
@@ -79,8 +85,11 @@ Options.Triggers.push({
     },
     {
       id: "Ready Check Fail",
-      regex:
-        /^.{15}ChatLog 00:0039::?Ready check complete\. Ready: \d{1,2}\/\d{1,2} Not Ready: [1-9]/,
+      type: "GameLog",
+      netRegex: NetRegexes.gameLog({
+        line: "Ready check complete\\. Ready: \\d{1,2}\\/\\d{1,2} Not Ready: [1-9].*?",
+        capture: false,
+      }),
       sound: () =>
         "../../user/wav/" +
         generic_random_array_element(
@@ -91,14 +100,20 @@ Options.Triggers.push({
     },
     {
       id: "Charybdis",
-      regex:
-        /^.{15}[A-Za-z]* 14:[\dA-F]{2,5}:(?:[ -9;-~èéêîïôàæûç]{1,99}) starts using (?:Charybdis|Terror Unleashed)/,
+      type: "StartsUsing",
+      netRegex: NetRegexes.startsUsing({
+        ability: "(?:Charybdis|Terror Unleashed)",
+        capture: false,
+      }),
       sound: "../../user/wav/FH-Healthbars-Short.wav",
     },
     {
       id: "Damage Down",
-      regex:
-        /^.{15}StatusAdd 1A:(?:(?:[^:]*)):(?:Damage Down|Vulnerability Up|Paralysis):(?:(?:[^:]*)):(?:(?:[^:]*)):(?:(?:[^:]*)):(?:(?:[^:]*)):(?<target>(?:[^:]*))/,
+      type: "GainsEffect",
+      netRegex: NetRegexes.gainsEffect({
+        effect: "(?:Damage Down|Vulnerability Up|Paralysis)",
+        capture: true,
+      }),
       condition: (data, matches) => data.party.inParty(matches.target),
       suppressSeconds: 1,
       sound: "../../user/wav/roblox-death-sound.wav",
