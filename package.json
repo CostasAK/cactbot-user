@@ -1,7 +1,0 @@
-{
-  "standard": {
-    "ignore": [
-      "/data/**/*.js"
-    ]
-  }
-}
