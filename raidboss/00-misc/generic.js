@@ -22,6 +22,11 @@ const generic_ready_check_sounds = [
     ],
   },
   {
+    initiate: ["JoelHaverRPG - 10", "JoelHaverRPG - 11"],
+    fail: ["JoelHaverRPG - 7", "JoelHaverRPG - 8", "JoelHaverRPG - 9"],
+    success: ["JoelHaverRPG - 12"],
+  },
+  {
     initiate: ["D.Va_-_Group_up", "D.Va_-_Game_on", "D.Va_-_Suiting_up"],
     fail: ["D.Va_-_Almost_ready"],
     success: [
