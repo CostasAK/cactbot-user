@@ -1,22 +1,20 @@
 'use strict'
 
-Options.TimelineEnabled = true // eslint-disable-line no-undef
-Options.AlertsEnabled = true // eslint-disable-line no-undef
-Options.TextAlertsEnabled = true // eslint-disable-line no-undef
-Options.SoundAlertsEnabled = false // eslint-disable-line no-undef
-Options.SpokenAlertsEnabled = false // eslint-disable-line no-undef
-Options.GroupSpokenAlertsEnabled = false // eslint-disable-line no-undef
-Options.InfoSoundVolume = 0 // eslint-disable-line no-undef
-Options.AlertSoundVolume = 0 // eslint-disable-line no-undef
-Options.AlarmSoundVolume = 0 // eslint-disable-line no-undef
-Options.LongSoundVolume = 1 // eslint-disable-line no-undef
-Options.PullSoundVolume = 1 // eslint-disable-line no-undef
-Options.ShowTimerBarsAtSeconds = 60 // eslint-disable-line no-undef
-Options.KeepExpiredTimerBarsForSeconds = 0.7 // eslint-disable-line no-undef
-Options.BarExpiresSoonSeconds = 8 // eslint-disable-line no-undef
-Options.MaxNumberOfTimerBars = 6 // eslint-disable-line no-undef
+Options.TimelineEnabled = true;
+Options.AlertsEnabled = true;
+Options.TextAlertsEnabled = true;
+Options.SoundAlertsEnabled = false;
+Options.SpokenAlertsEnabled = false;
+Options.InfoSoundVolume = 0;
+Options.AlertSoundVolume = 0;
+Options.AlarmSoundVolume = 0;
+Options.LongSoundVolume = 1;
+Options.PullSoundVolume = 1;
+Options.ShowTimerBarsAtSeconds = 60;
+Options.KeepExpiredTimerBarsForSeconds = 0.7;
+Options.BarExpiresSoonSeconds = 8;
+Options.MaxNumberOfTimerBars = 6;
 Options.PlayerNicks = {
-  // eslint-disable-line no-undef
   "Gust Leonard": "Gust",
   "Tali Lamora": "Talli",
   "Tannie Kleinvoetjies": "Seth",
