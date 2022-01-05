@@ -117,6 +117,7 @@ Options.Triggers.push({
       condition: (data, matches) => data.party.inParty(matches.target),
       suppressSeconds: 1,
       sound: "../../user/wav/roblox-death-sound.wav",
+      soundVolume: 0.5,
     },
   ],
 });
