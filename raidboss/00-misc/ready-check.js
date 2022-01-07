@@ -38,11 +38,15 @@ const generic_ready_check_sounds = [
   },
 ];
 
+const random_array_element = (arr) =>
+  arr[Math.floor(Math.random() * arr.length)];
+
 var generic_ready_check_chances = [];
 for (let i = 0; i < generic_ready_check_sounds.length; i++) {
   generic_ready_check_chances = generic_ready_check_chances.concat(
     Array(
       Math.max(
+        generic_ready_check_sounds[i].initiate.length,
         generic_ready_check_sounds[i].fail.length,
         generic_ready_check_sounds[i].success.length
       )
@@ -50,10 +54,8 @@ for (let i = 0; i < generic_ready_check_sounds.length; i++) {
   );
 }
 
-const generic_random_array_element = (arr) =>
-  arr[Math.floor(Math.random() * arr.length)];
 const generic_new_ready_check_set = () =>
-  generic_random_array_element(generic_ready_check_chances);
+  random_array_element(generic_ready_check_chances);
 var generic_ready_check_set = generic_new_ready_check_set();
 
 Options.Triggers.push({
@@ -66,9 +68,10 @@ Options.Triggers.push({
         line: "(?:\\y{Name} has initiated|You have commenced) a ready check\\..*?",
         capture: false,
       }),
+      suppressSeconds: 2,
       sound: () =>
         "../../user/wav/" +
-        generic_random_array_element(
+        random_array_element(
           generic_ready_check_sounds[generic_ready_check_set].initiate
         ) +
         ".wav",
@@ -82,7 +85,7 @@ Options.Triggers.push({
       }),
       sound: () =>
         "../../user/wav/" +
-        generic_random_array_element(
+        random_array_element(
           generic_ready_check_sounds[generic_ready_check_set].success
         ) +
         ".wav",
@@ -97,7 +100,7 @@ Options.Triggers.push({
       }),
       sound: () =>
         "../../user/wav/" +
-        generic_random_array_element(
+        random_array_element(
           generic_ready_check_sounds[generic_ready_check_set].fail
         ) +
         ".wav",
