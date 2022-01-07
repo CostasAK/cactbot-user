@@ -199,7 +199,7 @@ Object.assign(Options.PerTriggerOptions, {
     TTSText: "Burst",
   },
   "NIN Trick Attack": {
-    SpeechAlert: true,
+    SpeechAlert: false,
     TTSText: "Trick",
   },
   "Limit Break Full": {
