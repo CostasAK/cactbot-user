@@ -31,3 +31,15 @@ Options.PlayerNicks = {
   "Seuny Hena": "Sunny",
   "Kali Sunfeather": "Kali",
 };
+
+Options.Triggers.map((element) => {
+  if (element["triggers"] !== undefined) {
+    element["triggers"].map((trigger) => {
+      if (trigger["options"] !== undefined) {
+        Object.assign(Options.PerTriggerOptions, {
+          [trigger["id"]]: trigger["options"],
+        });
+      }
+    });
+  }
+});
