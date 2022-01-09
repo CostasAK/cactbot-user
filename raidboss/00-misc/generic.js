@@ -14,6 +14,9 @@ Options.Triggers.push({
         capture: false,
       }),
       sound: "../../user/wav/FH-Healthbars-Short.wav",
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "Look Away",
@@ -23,6 +26,9 @@ Options.Triggers.push({
         capture: false,
       }),
       sound: "../../user/wav/MITE MITE NYARUKO.wav",
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "Damage Down",
@@ -42,6 +48,9 @@ Options.Triggers.push({
           "roblox-death-sound.wav",
         ]),
       soundVolume: 0.5,
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "Request Message",
@@ -53,6 +62,9 @@ Options.Triggers.push({
       }),
       suppressSeconds: 1,
       tts: (_, matches) => matches.message,
+      options: {
+        SpeechAlert: true,
+      },
     },
     {
       id: "Provoke",
@@ -87,6 +99,9 @@ Options.Triggers.push({
             .map((elem) => Array(elem[1]).fill(elem[0]))
             .flat(Infinity)
         ),
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "Teleport",
@@ -113,6 +128,9 @@ Options.Triggers.push({
             .flat(Infinity)
         ),
       soundVolume: 0.25,
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "Missed Combo",
@@ -130,6 +148,9 @@ Options.Triggers.push({
           "CrashBandicoot Woah 03.wav",
         ]),
       soundVolume: 0.25,
+      options: {
+        SoundAlert: false,
+      },
     },
     {
       id: "DNC Improvisation",
@@ -166,30 +187,9 @@ Options.Triggers.push({
           "everybody-dance-now-2.wav",
         ]),
       soundVolume: 0.71,
+      options: {
+        SoundAlert: true,
+      },
     },
   ],
-});
-
-Object.assign(Options.PerTriggerOptions, {
-  Charybdis: {
-    SoundAlert: true,
-  },
-  "Damage Down": {
-    SoundAlert: true,
-  },
-  "Request Message": {
-    SpeechAlert: true,
-  },
-  Provoke: {
-    SoundAlert: true,
-  },
-  Teleport: {
-    SoundAlert: true,
-  },
-  "Missed Combo": {
-    SoundAlert: false,
-  },
-  "DNC Improvisation": {
-    SoundAlert: true,
-  },
 });
