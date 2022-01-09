@@ -15,22 +15,17 @@ Options.KeepExpiredTimerBarsForSeconds = 0.7;
 Options.BarExpiresSoonSeconds = 8;
 Options.MaxNumberOfTimerBars = 6;
 Options.PlayerNicks = {
-  "Gust Leonard": "Gust",
-  "Tali Lamora": "Talli",
   "Tannie Kleinvoetjies": "Seth",
-  "Seth Rah": "Seth",
-  "Shiroe Enchanter": "Shihro",
-  "Roe Two": "Shihro",
-  "Marielle Maru": "Mary",
-  "Tymo Aimali": "Timo",
-  "Ahmed Sins": "Ahmed",
-  "Yuki Kimura": "Yuki",
-  "Mr Snuggleton": "Snuggles",
-  "Know Thyself": "Pete",
-  "Krato Nightwhisper": "Kraato",
-  "Seuny Hena": "Sunny",
-  "Kali Sunfeather": "Kali",
+  "Roe Two": "Shiroe",
 };
+Options.TransformTts = (tts) =>
+  tts
+    .replace(/\bTali\b/gi, "Talli")
+    .replace(/\bShiroe\b/gi, "Shihro")
+    .replace(/\bMari\b/gi, "Mary")
+    .replace(/\Tymo\b/gi, "Timo")
+    .replace(/\Krato\b/gi, "Kraato")
+    .replace(/\Seuny\b/gi, "Sunny");
 
 Options.Triggers.map((element) => {
   if (element["triggers"] !== undefined) {
