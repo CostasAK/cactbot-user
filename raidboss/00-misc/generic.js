@@ -191,5 +191,101 @@ Options.Triggers.push({
         SoundAlert: true,
       },
     },
+    {
+      id: "Rescue",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        id: "1D93",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      sound: () =>
+        "../../user/wav/" +
+        random_array_element(
+          [
+            ["GET OVER HERE.wav", 3],
+            ["accio bum0.wav", 2],
+            ["accio bum1.wav", 2],
+            ["accio bum2.wav", 1],
+            ["accio bum3.wav", 1],
+          ]
+            .map((elem) => Array(elem[1]).fill(elem[0]))
+            .flat(Infinity)
+        ),
+      soundVolume: 0.32,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "PLD Cover",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        id: "1B",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      sound: () =>
+        "../../user/wav/DarknessPLD/Cover" +
+        Math.floor(Math.random() * 5) +
+        ".wav",
+      soundVolume: 0.32,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "PLD Wings",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        id: "1CD9",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      sound: () =>
+        "../../user/wav/DarknessPLD/Wings" +
+        Math.floor(Math.random() * 5) +
+        ".wav",
+      soundVolume: 0.32,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "This Is The End",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        ability: ".*?\\bEnd\\b.*?",
+        capture: true,
+      }),
+      condition: (data, matches) => !data.party.inParty(matches.source),
+      sound: () => "../../user/wav/This is The End.wav",
+      soundVolume: 0.32,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "Well Fed",
+      type: "GainsEffect",
+      netRegex: NetRegexes.gainsEffect({
+        effect: "Well Fed",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.target),
+      suppressSeconds: 1,
+      sound: () =>
+        "../../user/wav/" +
+        random_array_element([
+          "Minecraft eating sound effect 1.wav",
+          "Minecraft eating sound effect 2.wav",
+          "ACNH_Eat_Short.wav",
+          "ACNH_Eat.wav",
+        ]),
+      soundVolume: 0.2,
+      options: {
+        SoundAlert: true,
+      },
+    },
   ],
 });
