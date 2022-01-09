@@ -87,21 +87,3 @@ Options.Triggers.push({
     },
   ],
 });
-
-Object.assign(Options.PerTriggerOptions, {
-  "DRK Living Dead": {
-    SoundAlert: true,
-  },
-  "DRK Walking Dead": {
-    SoundAlert: true,
-  },
-  "GNB Superbolide": {
-    SoundAlert: true,
-  },
-  "PLD Hallowed Ground": {
-    SoundAlert: true,
-  },
-  "WAR Holmgang": {
-    SoundAlert: true,
-  },
-});
