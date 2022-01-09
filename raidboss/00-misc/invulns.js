@@ -1,5 +1,20 @@
 "use strict";
 
+const unstoppable_sounds = [
+  "UT2k4-Sexy-Unstoppable.ogg",
+  "UT3-unstoppable.wav",
+  "UT2k3-Main-unstoppable.wav",
+  "UT2k4-Female-Unstoppable.wav",
+  "UT2k4-Male-Unstoppable.wav",
+];
+const invincible_sounds = [
+  "UT2k4-Female-Invulnerable.wav",
+  "UT2k4-Male-Invulnerable.wav",
+];
+
+const random_array_element = (arr) =>
+  arr[Math.floor(Math.random() * arr.length)];
+
 Options.Triggers.push({
   zoneRegex: /.*/,
   triggers: [
@@ -50,9 +65,10 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) => data.party.inParty(matches.source),
-      sound: "../../user/wav/MGS_alert.wav",
+      sound: () => "../../user/wav/" + random_array_element(invincible_sounds),
+      soundVolume: 0.71,
       options: {
-        SoundAlert: false,
+        SoundAlert: true,
       },
     },
     {
@@ -63,9 +79,10 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) => data.party.inParty(matches.source),
-      sound: "../../user/wav/MGS_alert.wav",
+      sound: () => "../../user/wav/" + random_array_element(unstoppable_sounds),
+      soundVolume: 0.71,
       options: {
-        SoundAlert: false,
+        SoundAlert: true,
       },
     },
   ],
