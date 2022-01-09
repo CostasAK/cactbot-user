@@ -1,6 +1,6 @@
 "use strict";
 
-const generic_random_array_element = (arr) =>
+const random_array_element = (arr) =>
   arr[Math.floor(Math.random() * arr.length)];
 
 Options.Triggers.push({
@@ -16,16 +16,156 @@ Options.Triggers.push({
       sound: "../../user/wav/FH-Healthbars-Short.wav",
     },
     {
+      id: "Look Away",
+      type: "StartsUsing",
+      netRegex: NetRegexes.startsUsing({
+        ability: "(?:Petrifaction|Nightmare|Absolute Flash)",
+        capture: false,
+      }),
+      sound: "../../user/wav/MITE MITE NYARUKO.wav",
+    },
+    {
       id: "Damage Down",
       type: "GainsEffect",
       netRegex: NetRegexes.gainsEffect({
-        effect: "(?:Damage Down|Vulnerability Up|Paralysis)",
+        effect: "(?:Damage Down|Vulnerability Up|Paralysis|Stun)",
         capture: true,
       }),
       condition: (data, matches) => data.party.inParty(matches.target),
       suppressSeconds: 1,
-      sound: "../../user/wav/roblox-death-sound.wav",
+      sound: () =>
+        "../../user/wav/" +
+        random_array_element([
+          "CrashBandicoot Woah 01.wav",
+          "CrashBandicoot Woah 02.wav",
+          "CrashBandicoot Woah 03.wav",
+          "roblox-death-sound.wav",
+        ]),
       soundVolume: 0.5,
+    },
+    {
+      id: "Request Message",
+      type: "GameLog",
+      netRegex: NetRegexes.gameLog({
+        code: "000e",
+        line: "YUKKURI: (?<message>.*)",
+        capture: true,
+      }),
+      suppressSeconds: 1,
+      tts: (_, matches) => matches.message,
+    },
+    {
+      id: "Provoke",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        id: "1D6D",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      sound: () =>
+        "../../user/wav/" +
+        random_array_element(
+          [
+            ["Monty Python and the Holy Grail - Ni 1.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 2.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 3.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 4.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 5.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 6.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 7.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 8.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 9.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 10.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 11.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 12.wav", 4],
+            ["Monty Python and the Holy Grail - Ni 13.wav", 4],
+            ["Monty Python and the Holy Grail - tPeng.wav", 1],
+            ["Monty Python and the Holy Grail - NiWong.wav", 1],
+            ["anime-rabbit-touch-me.wav", 2],
+            ["anime-rabbit-touch-me-harder.wav", 1],
+          ]
+            .map((elem) => Array(elem[1]).fill(elem[0]))
+            .flat(Infinity)
+        ),
+    },
+    {
+      id: "Teleport",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        id: "3E8A|64A2|5F51|5F52|5F53|5EE7|9B|1CFB|8D6",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      sound: () =>
+        "../../user/wav/" +
+        random_array_element(
+          [
+            ["Dragon Ball Super Teleport 1.wav", 2],
+            ["Dragon Ball Super Teleport 2.wav", 2],
+            ["Dragon Ball Super Teleport 3.wav", 2],
+            ["Dragon Ball Super Teleport 4.wav", 2],
+            ["Dragon Ball Super Teleport 5.wav", 2],
+            ["Dragon Ball Super Teleport 6.wav", 2],
+            ["Bleach - Shunpo.wav", 1],
+            ["Bleach - Sonido.wav", 2],
+          ]
+            .map((elem) => Array(elem[1]).fill(elem[0]))
+            .flat(Infinity)
+        ),
+      soundVolume: 0.25,
+    },
+    {
+      id: "Missed Combo",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        id: "0F|DD3|DD2|4049|25|2A|2D|404E|E27|E30|4054|3F0B|3F11|3F15|4E|54|57|58|1CE5|405D|8C2|8CF|4068|DEB|1D37|1D3A|1D36|1D39|1D38|1D3D|1D3C|1CF4|1CF5|3E76|3E7A|1D68|1D69|1D58|1D5C",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      sound: () =>
+        "../../user/wav/" +
+        random_array_element([
+          "CrashBandicoot Woah 01.wav",
+          "CrashBandicoot Woah 02.wav",
+          "CrashBandicoot Woah 03.wav",
+        ]),
+      soundVolume: 0.25,
+    },
+    {
+      id: "DNC Improvisation",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        id: "3E8E",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      sound: () =>
+        "../../user/wav/" +
+        random_array_element([
+          "House of Pain - Jump Around (Official Music Video).wav",
+          "david-bowie-lets-dance-short.wav",
+          "everybody-dance-now.wav",
+          "Technotronic - Pump Up The Jam (Get Your Booty on the Floor Tonight).wav",
+          "Bee Gees - You Should Be Dancing 1976 (HQ Audio).wav",
+          "Bruce Springsteen - Dancing In the Dark (Official Video).wav",
+          "Whitney Houston - I Wanna Dance With Somebody (Official Video).wav",
+          "Men Without Hats - Safety Dance (HD 720p).wav",
+          "KC & The Sunshine Band - Get Down Tonight (HQ with lyrics).wav",
+          "Billy Idol - Dancing With Myself (Official Music Video).wav",
+          "I'm Happy Just To Dance With You (Remastered 2009).wav",
+          "Chic - Everybody Dance.wav",
+          "Leo Sayer - You make me feel like dancing (1976).wav",
+          "Madonna - Into The Groove (Official Music Video).wav",
+          "Salt-N-Pepa - Push It (Official Video).wav",
+          "Sly & The Family Stone - Dance To The Music (Audio).wav",
+          "The Hooters - And We Danced (Official Video).wav",
+          "Backstreet Boys - Everybody (Backstreet's Back) (Official Music Video).wav",
+          "Elton John - Tiny Dancer (Official Music Video).wav",
+          "The Kinks Come Dancing.wav",
+          "C+C Music Factory - Gonna Make You Sweat (Everybody Dance Now) ft. Freedom Williams.wav",
+          "everybody-dance-now-2.wav",
+        ]),
+      soundVolume: 0.71,
     },
   ],
 });
@@ -35,6 +175,21 @@ Object.assign(Options.PerTriggerOptions, {
     SoundAlert: true,
   },
   "Damage Down": {
+    SoundAlert: true,
+  },
+  "Request Message": {
+    SpeechAlert: true,
+  },
+  Provoke: {
+    SoundAlert: true,
+  },
+  Teleport: {
+    SoundAlert: true,
+  },
+  "Missed Combo": {
+    SoundAlert: false,
+  },
+  "DNC Improvisation": {
     SoundAlert: true,
   },
 });
