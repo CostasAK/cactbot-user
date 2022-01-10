@@ -127,7 +127,7 @@ Options.Triggers.push({
             .map((elem) => Array(elem[1]).fill(elem[0]))
             .flat(Infinity)
         ),
-      soundVolume: 0.25,
+      soundVolume: 0.2,
       options: {
         SoundAlert: true,
       },
