@@ -12,7 +12,7 @@ Options.Triggers.push({
       }),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
-        SoundAlert: true,
+        SoundAlert: false,
       },
     },
     {
@@ -24,7 +24,7 @@ Options.Triggers.push({
       }),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
-        SoundAlert: true,
+        SoundAlert: false,
       },
     },
     {
@@ -36,7 +36,7 @@ Options.Triggers.push({
       }),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
-        SoundAlert: true,
+        SoundAlert: false,
       },
     },
     {
@@ -48,7 +48,7 @@ Options.Triggers.push({
       }),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
-        SoundAlert: true,
+        SoundAlert: false,
       },
     },
     {
@@ -58,9 +58,12 @@ Options.Triggers.push({
         target: "Tali Lamora",
         capture: false,
       }),
-      sound: "../../user/wav/roblox-death-sound.wav",
+      sound: () =>
+        "../../user/wav/tali2022-01-10/tali-" +
+        Math.floor(Math.random() * 6) +
+        ".wav",
       options: {
-        SoundAlert: true,
+        SoundAlert: false,
       },
     },
     {
@@ -70,9 +73,12 @@ Options.Triggers.push({
         target: "Shiroe Enchanter",
         capture: false,
       }),
-      sound: "../../user/wav/roblox-death-sound.wav",
+      sound: () =>
+        "../../user/wav/Shiro2022-01-10/Shiroe-0" +
+        (Math.floor(Math.random() * 4) + 1) +
+        ".wav",
       options: {
-        SoundAlert: true,
+        SoundAlert: false,
       },
     },
     {
@@ -84,7 +90,7 @@ Options.Triggers.push({
       }),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
-        SoundAlert: true,
+        SoundAlert: false,
       },
     },
     {
@@ -96,7 +102,7 @@ Options.Triggers.push({
       }),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
-        SoundAlert: true,
+        SoundAlert: false,
       },
     },
   ],
