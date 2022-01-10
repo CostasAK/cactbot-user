@@ -124,7 +124,7 @@ Options.Triggers.push({
         source: "Erichthonios",
         capture: true,
       }),
-      condition: (data, matches) => !data.party.isTank(matches.target)
+      condition: (data, matches) => !data.party.isTank(matches.target),
       sound: "../../user/wave/southpark-are-you-gonna-rape-us.wav",
       options: {
         SoundAlert: true,
