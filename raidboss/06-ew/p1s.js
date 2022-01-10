@@ -116,5 +116,19 @@ Options.Triggers.push({
         SoundAlert: true,
       },
     },
+    {
+      id: "P1S Pitiless Flail on Non-Tank",
+      type: "StartsUsing",
+      netRegex: NetRegexes.startsUsing({
+        id: "6629|660E|660F",
+        source: "Erichthonios",
+        capture: true,
+      }),
+      condition: (data, matches) => !data.party.isTank(matches.target)
+      sound: "../../user/wave/southpark-are-you-gonna-rape-us.wav",
+      options: {
+        SoundAlert: true,
+      },
+    },
   ],
 });
