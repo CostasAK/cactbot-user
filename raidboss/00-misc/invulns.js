@@ -1,7 +1,7 @@
 "use strict";
 
 const unstoppable_sounds = [
-  "UT2k4-Sexy-Unstoppable.ogg",
+  "UT2k4-Sexy-Unstoppable.wav",
   "UT3-unstoppable.wav",
   "UT2k3-Main-unstoppable.wav",
   "UT2k4-Female-Unstoppable.wav",
