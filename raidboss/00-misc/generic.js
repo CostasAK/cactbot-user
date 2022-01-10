@@ -229,7 +229,7 @@ Options.Triggers.push({
         "../../user/wav/DarknessPLD/Cover" +
         Math.floor(Math.random() * 5) +
         ".wav",
-      soundVolume: 0.32,
+      soundVolume: 0.5,
       options: {
         SoundAlert: true,
       },
@@ -246,7 +246,7 @@ Options.Triggers.push({
         "../../user/wav/DarknessPLD/Wings" +
         Math.floor(Math.random() * 5) +
         ".wav",
-      soundVolume: 0.32,
+      soundVolume: 0.5,
       options: {
         SoundAlert: true,
       },
