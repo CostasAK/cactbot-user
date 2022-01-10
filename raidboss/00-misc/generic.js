@@ -153,6 +153,21 @@ Options.Triggers.push({
       },
     },
     {
+      id: "NIN Bunny",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        id: "8E0",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      sound: () =>
+        "../../user/wav/ACNH_stung_by_wasps.wav",
+      soundVolume: 0.2,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
       id: "DNC Improvisation",
       type: "Ability",
       netRegex: NetRegexes.ability({
