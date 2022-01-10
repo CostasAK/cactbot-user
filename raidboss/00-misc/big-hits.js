@@ -49,7 +49,9 @@ Options.Triggers.push({
         id: "407B",
         capture: true,
       }),
-      condition: (_, matches) => log2dmg(matches.damage) >= 2 ** 15,
+      condition: (data, matches) =>
+        data.party.inParty(matches.source) &&
+        log2dmg(matches.damage) >= 32768,
       sound: "../../user/wav/KonoSuba-Megumin-Explosion.wav",
       soundVolume: 0.2,
       options: {
@@ -66,6 +68,82 @@ Options.Triggers.push({
       }),
       sound: "../../user/wav/Edgy!.wav",
       soundVolume: 0.25,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "MCH Reassemble",
+      type: "Ability",
+      netRegex: NetRegexes.ability({
+        id: "B3C",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      preRun: (data) => (data.mch_reassemble = true),
+      delaySeconds: 5.5,
+      run: (data) => (data.mch_reassemble = false),
+    },
+    {
+      id: "MCH Natural DirectCrit Drill",
+      type: "Ability",
+      netRegex: NetRegexes.abilityFull({
+        id: "4072",
+        flags: "\\d{3,5}(3\\d|\\d3)3",
+        capture: true,
+      }),
+      condition: (data, matches) =>
+        data.party.inParty(matches.source) &&
+        (!data.mch_reassemble || data.mch_reassemble === undefined),
+      sound: "../../user/wav/TTGL_drill.wav",
+      soundVolume: 0.2,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "NIN Bunshin",
+      type: "Ability",
+      netRegex: NetRegexes.abilityFull({
+        ability: "Bunshin",
+        flags: "\\d{3,5}(3\\d|\\d3)3",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      sound: "../../user/wav/NARUTO_KAGE-BUNSHIN-NO-JUTSU.wav",
+      soundVolume: 0.2,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "SAM Midare Setsugekka Big Hit",
+      type: "Ability",
+      netRegex: NetRegexes.abilityFull({
+        id: "1D3F",
+        capture: true,
+      }),
+      condition: (data, matches) =>
+        data.party.inParty(matches.source) &&
+        log2dmg(matches.damage) >= 40000,
+      sound: "../../user/wav/south-park-lets-fighting-love-wonderful-penis.wav",
+      soundVolume: 0.2,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "WHM Afflatus Misery Big Hit",
+      type: "Ability",
+      netRegex: NetRegexes.abilityFull({
+        id: "4097",
+        capture: true,
+      }),
+      condition: (data, matches) =>
+        data.party.inParty(matches.source) &&
+        log2dmg(matches.damage) >= 32768,
+      sound: "../../user/wav/anime-wow-sound-effect.wav",
+      soundVolume: 0.2,
       options: {
         SoundAlert: true,
       },
