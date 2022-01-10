@@ -4,12 +4,23 @@ Options.Triggers.push({
   zoneRegex: /.*/,
   triggers: [
     {
+      id: "Death Cooldown",
+      type: "WasDefeated",
+      netRegex: NetRegexes.wasDefeated({
+        capture: false,
+      }),
+      delaySeconds: 5,
+      run: (data) => (data.death_cooldown = false),
+    },
+    {
       id: "Death Ahmed",
       type: "WasDefeated",
       netRegex: NetRegexes.wasDefeated({
         target: "Ahmed Sins",
         capture: false,
       }),
+      condition: (data) => !data.death_cooldown,
+      preRun: (data) => (data.death_cooldown = true),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
         SoundAlert: false,
@@ -22,6 +33,8 @@ Options.Triggers.push({
         target: "Tymo Aimali",
         capture: false,
       }),
+      condition: (data) => !data.death_cooldown,
+      preRun: (data) => (data.death_cooldown = true),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
         SoundAlert: false,
@@ -34,6 +47,8 @@ Options.Triggers.push({
         target: "Marielle Maru",
         capture: false,
       }),
+      condition: (data) => !data.death_cooldown,
+      preRun: (data) => (data.death_cooldown = true),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
         SoundAlert: false,
@@ -46,7 +61,12 @@ Options.Triggers.push({
         target: "Kali Sunfeather",
         capture: false,
       }),
-      sound: "../../user/wav/roblox-death-sound.wav",
+      condition: (data) => !data.death_cooldown,
+      preRun: (data) => (data.death_cooldown = true),
+      sound: () =>
+        "../../user/wav/Kali2022-01-10/Recording_" +
+        Math.floor(Math.random() * 10) +
+        ".wav",
       options: {
         SoundAlert: false,
       },
@@ -58,6 +78,8 @@ Options.Triggers.push({
         target: "Tali Lamora",
         capture: false,
       }),
+      condition: (data) => !data.death_cooldown,
+      preRun: (data) => (data.death_cooldown = true),
       sound: () =>
         "../../user/wav/tali2022-01-10/tali-" +
         Math.floor(Math.random() * 6) +
@@ -73,6 +95,8 @@ Options.Triggers.push({
         target: "Shiroe Enchanter",
         capture: false,
       }),
+      condition: (data) => !data.death_cooldown,
+      preRun: (data) => (data.death_cooldown = true),
       sound: () =>
         "../../user/wav/Shiro2022-01-10/Shiroe-0" +
         (Math.floor(Math.random() * 4) + 1) +
@@ -88,6 +112,8 @@ Options.Triggers.push({
         target: "Gust Leonard",
         capture: false,
       }),
+      condition: (data) => !data.death_cooldown,
+      preRun: (data) => (data.death_cooldown = true),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
         SoundAlert: false,
@@ -100,6 +126,8 @@ Options.Triggers.push({
         target: "Yuki Kimura",
         capture: false,
       }),
+      condition: (data) => !data.death_cooldown,
+      preRun: (data) => (data.death_cooldown = true),
       sound: "../../user/wav/roblox-death-sound.wav",
       options: {
         SoundAlert: false,
