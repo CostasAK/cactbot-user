@@ -14,6 +14,9 @@ Options.Triggers.push({
       }),
       suppressSeconds: 2,
       sound: "../../user/wav/bigshaq-boom.wav",
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "P1S In and Out",
@@ -25,6 +28,9 @@ Options.Triggers.push({
       }),
       delaySeconds: 2,
       sound: "../../user/wav/frank-zappa-i-have-been-in-you_dB-3.wav",
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "P1S Out and In",
@@ -36,6 +42,9 @@ Options.Triggers.push({
       }),
       delaySeconds: 2,
       sound: "../../user/wav/captain-america-get-away-get-back_dB-3.wav",
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "P1S Left First",
@@ -47,6 +56,9 @@ Options.Triggers.push({
       }),
       delaySeconds: 2,
       sound: "../../user/wav/Beyoncé - to the left.wav",
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "P1S Left Second",
@@ -58,6 +70,9 @@ Options.Triggers.push({
       }),
       delaySeconds: 11,
       sound: "../../user/wav/Beyoncé - to the left.wav",
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "P1S Right First",
@@ -69,6 +84,9 @@ Options.Triggers.push({
       }),
       delaySeconds: 2,
       sound: "../../user/wav/Cha-Cha Slide - slide to the right.wav",
+      options: {
+        SoundAlert: true,
+      },
     },
     {
       id: "P1S Right Second",
@@ -80,30 +98,23 @@ Options.Triggers.push({
       }),
       delaySeconds: 11,
       sound: "../../user/wav/Cha-Cha Slide - slide to the right.wav",
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "P1S Pitiless Flail Beam",
+      type: "StartsUsing",
+      netRegex: NetRegexes.startsUsing({
+        id: "660E|660F",
+        source: "Erichthonios",
+        capture: false,
+      }),
+      delaySeconds: 3,
+      sound: "../../user/wave/Haruhi - Mikuru Beam.wav",
+      options: {
+        SoundAlert: true,
+      },
     },
   ],
-});
-
-Object.assign(Options.PerTriggerOptions, {
-  "P1S Intemperate Torment": {
-    SoundAlert: true,
-  },
-  "P1S In and Out": {
-    SoundAlert: true,
-  },
-  "P1S Out and In": {
-    SoundAlert: true,
-  },
-  "P1S Left First": {
-    SoundAlert: true,
-  },
-  "P1S Right First": {
-    SoundAlert: true,
-  },
-  "P1S Left Second": {
-    SoundAlert: true,
-  },
-  "P1S Right Second": {
-    SoundAlert: true,
-  },
 });
