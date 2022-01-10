@@ -11,8 +11,23 @@ Options.Triggers.push({
         source: "Hippokampos",
         capture: true,
       }),
-      condition: (data, matches) => !data.party.isTank(matches.target)
+      condition: (data, matches) => !data.party.isTank(matches.target),
       sound: "../../user/wave/southpark-are-you-gonna-rape-us.wav",
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "P2S Delayed Stacks",
+      type: "StartsUsing",
+      netRegex: NetRegexes.startsUsing({
+        id: "682B",
+        source: "Hippokampos",
+        capture: false,
+      }),
+      suppressSeconds: 1,
+      sound: () =>
+        "../../user/wave/wait-for-it" + Math.floor(Math.random() * 37) + ".wav",
       options: {
         SoundAlert: true,
       },
