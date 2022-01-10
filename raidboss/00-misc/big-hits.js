@@ -50,8 +50,7 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) =>
-        data.party.inParty(matches.source) &&
-        log2dmg(matches.damage) >= 32768,
+        data.party.inParty(matches.source) && log2dmg(matches.damage) >= 32768,
       sound: "../../user/wav/KonoSuba-Megumin-Explosion.wav",
       soundVolume: 0.2,
       options: {
@@ -93,8 +92,7 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) =>
-        data.party.inParty(matches.source) &&
-        (!data.mch_reassemble || data.mch_reassemble === undefined),
+        data.party.inParty(matches.source) && !data.mch_reassemble,
       sound: "../../user/wav/TTGL_drill.wav",
       soundVolume: 0.2,
       options: {
@@ -124,8 +122,7 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) =>
-        data.party.inParty(matches.source) &&
-        log2dmg(matches.damage) >= 40000,
+        data.party.inParty(matches.source) && log2dmg(matches.damage) >= 40000,
       sound: "../../user/wav/south-park-lets-fighting-love-wonderful-penis.wav",
       soundVolume: 0.2,
       options: {
@@ -140,8 +137,7 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) =>
-        data.party.inParty(matches.source) &&
-        log2dmg(matches.damage) >= 32768,
+        data.party.inParty(matches.source) && log2dmg(matches.damage) >= 32768,
       sound: "../../user/wav/anime-wow-sound-effect.wav",
       soundVolume: 0.2,
       options: {
