@@ -32,5 +32,19 @@ Options.Triggers.push({
         SoundAlert: true,
       },
     },
+    {
+      id: "P2S Coherence Beam",
+      type: "StartsUsing",
+      netRegex: NetRegexes.startsUsing({
+        id: "681B",
+        source: "Hippokampos",
+        capture: false,
+      }),
+      delaySeconds: 10,
+      sound: "../../user/wave/Haruhi - Mikuru Beam.wav",
+      options: {
+        SoundAlert: true,
+      },
+    },
   ],
 });
