@@ -28,9 +28,12 @@ const countdown_voice_sets = [
   },
 ];
 
+var countdown_voice_set = 0;
 const new_countdown_voice_set = () =>
-  Math.floor(Math.random() * countdown_voice_sets.length);
-var countdown_voice_set = new_countdown_voice_set();
+  (countdown_voice_set = Options.UserFunctions.random_integer(
+    countdown_voice_sets.length
+  ));
+new_countdown_voice_set();
 
 Options.Triggers.push({
   zoneRegex: /.*/,
@@ -88,7 +91,7 @@ Options.Triggers.push({
       }),
       sound: () =>
         "../../user/wav/" + countdown_voice_sets[countdown_voice_set][0],
-      run: () => (countdown_voice_set = new_countdown_voice_set()),
+      run: () => new_countdown_voice_set(),
       options: {
         SoundAlert: true,
       },
