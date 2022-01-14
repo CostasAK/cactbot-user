@@ -12,7 +12,7 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) => !data.party.isTank(matches.target),
-      sound: "../../user/wave/southpark-are-you-gonna-rape-us.wav",
+      sound: "../../user/wav/southpark-are-you-gonna-rape-us.wav",
       options: {
         SoundAlert: true,
       },
@@ -21,13 +21,14 @@ Options.Triggers.push({
       id: "P2S Delayed Stacks",
       type: "StartsUsing",
       netRegex: NetRegexes.startsUsing({
-        id: "682B",
+        id: "682A",
         source: "Hippokampos",
         capture: false,
       }),
       suppressSeconds: 1,
       sound: () =>
-        "../../user/wave/wait-for-it" + Math.floor(Math.random() * 37) + ".wav",
+        "../../user/wav/wait-for-it" + Math.floor(Math.random() * 37) + ".wav",
+      soundVolume: 0.5,
       options: {
         SoundAlert: true,
       },
@@ -40,8 +41,8 @@ Options.Triggers.push({
         source: "Hippokampos",
         capture: false,
       }),
-      delaySeconds: 10,
-      sound: "../../user/wave/Haruhi - Mikuru Beam.wav",
+      delaySeconds: 14,
+      sound: "../../user/wav/Haruhi - Mikuru Beam.wav",
       options: {
         SoundAlert: true,
       },
