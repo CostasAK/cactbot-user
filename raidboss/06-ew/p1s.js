@@ -9,7 +9,6 @@ Options.Triggers.push({
       netRegex: NetRegexes.ability({
         source: "Erichthonios",
         id: "662[123]",
-        ability: "(?:Cold|Hot|Disastrous) Spell",
         capture: false,
       }),
       suppressSeconds: 2,
@@ -111,7 +110,7 @@ Options.Triggers.push({
         capture: false,
       }),
       delaySeconds: 3,
-      sound: "../../user/wave/Haruhi - Mikuru Beam.wav",
+      sound: "../../user/wav/Haruhi - Mikuru Beam.wav",
       options: {
         SoundAlert: true,
       },
@@ -125,7 +124,7 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) => !data.party.isTank(matches.target),
-      sound: "../../user/wave/southpark-are-you-gonna-rape-us.wav",
+      sound: "../../user/wav/southpark-are-you-gonna-rape-us.wav",
       options: {
         SoundAlert: true,
       },
