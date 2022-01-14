@@ -25,6 +25,9 @@ const log2dmg = (log) => {
   );
 };
 
+var pneuma_odds = Math.random();
+var pneuma_counter = 0;
+
 Options.Triggers.push({
   zoneRegex: /.*/,
   triggers: [
@@ -34,7 +37,7 @@ Options.Triggers.push({
       netRegex: NetRegexes.abilityFull({
         id: "1D11",
         flags: "\\d{3,5}(3\\d|\\d3)3",
-        capture: true,
+        capture: false,
       }),
       sound: "../../user/wav/Independence Day Welcome to Earth.wav",
       soundVolume: 0.2,
@@ -128,6 +131,28 @@ Options.Triggers.push({
       options: {
         SoundAlert: true,
       },
+    },
+    {
+      id: "SGE Pneuma DirectCrit or InstaKill",
+      type: "Ability",
+      netRegex: NetRegexes.abilityFull({
+        id: "5EFE",
+        flags: "\\d{3,5}(3\\d|\\d3)3",
+        capture: true,
+      }),
+      condition: (data, matches) => data.party.inParty(matches.source),
+      preRun: () => (pneuma_odds = Math.random()),
+      sound: () => {
+        "../../user/wav/" +
+          (pneuma_odds ? "TOOL Become Pneuma" : "Numa Numa " + pneuma_counter) +
+          ".wav";
+      },
+      soundVolume: 0.2,
+      options: {
+        SoundAlert: true,
+      },
+      run: () =>
+        (pneuma_counter = pneuma_odds < 0.1 ? 0 : (pneuma_counter + 1) % 3),
     },
     {
       id: "WHM Afflatus Misery Big Hit",
