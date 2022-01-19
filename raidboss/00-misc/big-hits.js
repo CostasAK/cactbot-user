@@ -141,20 +141,17 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) => data.party.inParty(matches.source),
-      preRun: () => (pneuma_odds = Math.random()),
+      preRun: () => (pneuma_odds = Math.random() < 0.1),
       sound: () => {
         "../../user/wav/" +
-          (pneuma_odds < 0.1
-            ? "TOOL Become Pneuma"
-            : "Numa Numa " + pneuma_counter) +
+          (pneuma_odds ? "TOOL Become Pneuma" : "Numa Numa " + pneuma_counter) +
           ".wav";
       },
       soundVolume: 0.2,
       options: {
         SoundAlert: true,
       },
-      run: () =>
-        (pneuma_counter = pneuma_odds < 0.1 ? 0 : (pneuma_counter + 1) % 3),
+      run: () => (pneuma_counter = pneuma_odds ? 0 : (pneuma_counter + 1) % 3),
     },
     {
       id: "WHM Afflatus Misery Big Hit",
