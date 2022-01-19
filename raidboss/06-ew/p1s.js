@@ -26,7 +26,7 @@ Options.Triggers.push({
         capture: false,
       }),
       delaySeconds: 2,
-      sound: "../../user/wav/frank-zappa-i-have-been-in-you_dB-3.wav",
+      sound: "../../user/wav/frank-zappa-i-have-been-in-you.wav",
       options: {
         SoundAlert: true,
       },
@@ -40,7 +40,7 @@ Options.Triggers.push({
         capture: false,
       }),
       delaySeconds: 2,
-      sound: "../../user/wav/captain-america-get-away-get-back_dB-3.wav",
+      sound: "../../user/wav/captain-america-get-away-get-back.wav",
       options: {
         SoundAlert: true,
       },
@@ -97,6 +97,20 @@ Options.Triggers.push({
       }),
       delaySeconds: 11,
       sound: "../../user/wav/Cha-Cha Slide - slide to the right.wav",
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "P1S Pitiless Flail Help",
+      type: "StartsUsing",
+      netRegex: NetRegexes.startsUsing({
+        id: "660E|660F",
+        source: "Erichthonios",
+        capture: true,
+      }),
+      condition: (data, matches) => data.no_invuln.includes(matches.target),
+      sound: Options.UserResponses.help,
       options: {
         SoundAlert: true,
       },
