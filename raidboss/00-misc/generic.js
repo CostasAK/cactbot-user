@@ -134,6 +134,7 @@ Options.Triggers.push({
     },
     {
       id: "Missed Combo",
+      disabled: true,
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "0F|DD3|DD2|4049|25|2A|2D|404E|E27|E30|4054|3F0B|3F11|3F15|4E|54|57|58|1CE5|405D|8C2|8CF|4068|DEB|1D37|1D3A|1D36|1D39|1D38|1D3D|1D3C|1CF4|1CF5|3E76|3E7A|1D68|1D69|1D58|1D5C",
@@ -160,8 +161,7 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) => data.party.inParty(matches.source),
-      sound: () =>
-        "../../user/wav/ACNH_stung_by_wasps.wav",
+      sound: () => "../../user/wav/ACNH_stung_by_wasps.wav",
       soundVolume: 0.2,
       options: {
         SoundAlert: true,
