@@ -69,6 +69,9 @@ Options.Triggers.push({
         Options.UserFunctions.random_array_element(
           Options.UserFunctions.random_array_element(wipe_sounds)
         ),
+      options: {
+        SoundAlert: true,
+      },
     },
   ],
 });
