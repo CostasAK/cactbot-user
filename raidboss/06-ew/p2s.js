@@ -4,6 +4,23 @@ Options.Triggers.push({
   zoneId: ZoneId.AsphodelosTheSecondCircleSavage,
   triggers: [
     {
+      id: "P2S Tankbuster Help",
+      type: "StartsUsing",
+      netRegex: NetRegexes.startsUsing({
+        id: "6832",
+        source: "Hippokampos",
+        capture: true,
+      }),
+      condition: (data, matches) => {
+        console.log(data.no_invuln);
+        return data.no_invuln.includes(matches.target);
+      },
+      sound: Options.UserResponses.help,
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
       id: "P2S Pitiless Flail on Non-Tank",
       type: "StartsUsing",
       netRegex: NetRegexes.startsUsing({
@@ -43,6 +60,20 @@ Options.Triggers.push({
       }),
       delaySeconds: 14,
       sound: "../../user/wav/Haruhi - Mikuru Beam.wav",
+      options: {
+        SoundAlert: true,
+      },
+    },
+    {
+      id: "P2S Knockback",
+      type: "StartsUsing",
+      netRegex: NetRegexes.startsUsing({
+        id: "682F",
+        source: "Hippokampos",
+        capture: false,
+      }),
+      delaySeconds: 2,
+      sound: "../../user/wav/bofuri-knockback.wav",
       options: {
         SoundAlert: true,
       },
