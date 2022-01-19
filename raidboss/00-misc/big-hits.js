@@ -144,7 +144,9 @@ Options.Triggers.push({
       preRun: () => (pneuma_odds = Math.random()),
       sound: () => {
         "../../user/wav/" +
-          (pneuma_odds ? "TOOL Become Pneuma" : "Numa Numa " + pneuma_counter) +
+          (pneuma_odds < 0.1
+            ? "TOOL Become Pneuma"
+            : "Numa Numa " + pneuma_counter) +
           ".wav";
       },
       soundVolume: 0.2,
