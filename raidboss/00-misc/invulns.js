@@ -31,21 +31,7 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) => data.party.inParty(matches.source),
-      preRun: (data, matches) => {
-        console.log(matches.source);
-        console.log(matches.id);
-        console.log(data.no_invuln);
-        console.log(
-          matches.id === "E36"
-            ? 300
-            : matches.id === "3F18"
-            ? 360
-            : matches.id === "1E"
-            ? 420
-            : 240
-        );
-        return data.no_invuln.push(matches.source);
-      },
+      preRun: (data, matches) => data.no_invuln.push(matches.source),
       delaySeconds: (_, matches) =>
         (matches.id === "E36"
           ? 300

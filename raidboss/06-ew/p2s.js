@@ -11,10 +11,7 @@ Options.Triggers.push({
         source: "Hippokampos",
         capture: true,
       }),
-      condition: (data, matches) => {
-        console.log(data.no_invuln);
-        return data.no_invuln.includes(matches.target);
-      },
+      condition: (data, matches) => data.no_invuln.includes(matches.target),
       sound: Options.UserResponses.help,
       options: {
         SoundAlert: true,
