@@ -66,6 +66,7 @@ Options.Triggers.push({
       id: "Wipe",
       netRegex: NetRegexes.network6d({ command: "40000010", capture: false }),
       sound: () =>
+        "../../user/wav/" +
         Options.UserFunctions.random_array_element(
           Options.UserFunctions.random_array_element(wipe_sounds)
         ),
