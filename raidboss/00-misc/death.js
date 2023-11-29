@@ -64,13 +64,9 @@ Options.Triggers.push({
         capture: false,
       }),
       condition: (data) => !data.death_cooldown,
-      preRun: (data) => {
-        data.death_cooldown = true;
-        data.death_counter_mari ||= 0;
-      },
-      sound: (data) => death_root + "Mari" + data.death_counter_mari + ".wav",
-      run: (data) =>
-        (data.death_counter_mari = Math.max(1, data.death_counter_mari + 1)),
+      preRun: (data) => (data.death_cooldown = true),
+      sound: () =>
+        death_root + "Mari" + Options.UserFunctions.random_integer(2) + ".wav",
       options: {
         SoundAlert: true,
         VolumeOverride: death_volume,
