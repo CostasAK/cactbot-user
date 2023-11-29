@@ -25,7 +25,8 @@ const log2dmg = (log) => {
   );
 };
 
-const dhcrit_insta_regex = /7[51](?:6\d{2}|\d{2}3)3/gi;
+const dhcrit_regex = /7[51](?:6\d{2}|\d{2}3)3/gi;
+const dh_or_crit_regex = /7[51](?:[246]\d{2}|\d{2}3)3/gi;
 const raise_ability = /Raise|Resurrection|Ascend|Egeiro/gi;
 
 var pneuma_odds = Math.random() < 0.1;
@@ -39,7 +40,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "6496",
-        flags: dhcrit_insta_regex,
+        flags: dhcrit_regex,
         capture: false,
       }),
       sound: "../../user/wav/anime-wow-sound-effect.wav",
@@ -67,7 +68,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         source: "Esteem",
-        flags: dhcrit_insta_regex,
+        flags: dhcrit_regex,
         capture: false,
       }),
       sound: "../../user/wav/Edgy!.wav",
@@ -81,7 +82,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "4097",
-        flags: dhcrit_insta_regex,
+        flags: dhcrit_regex,
         capture: false,
       }),
       sound: "../../user/wav/anime-wow-sound-effect.wav",
@@ -95,7 +96,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "1D11",
-        flags: dhcrit_insta_regex,
+        flags: dhcrit_regex,
         capture: false,
       }),
       sound: "../../user/wav/Independence Day Welcome to Earth.wav",
@@ -109,7 +110,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "5EFE",
-        flags: dhcrit_insta_regex,
+        flags: dh_or_crit_regex,
         capture: false,
       }),
       preRun: () => {
@@ -134,7 +135,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         ability: "Bunshin",
-        flags: dhcrit_insta_regex,
+        flags: dhcrit_regex,
         capture: false,
       }),
       sound: "../../user/wav/NARUTO_KAGE-BUNSHIN-NO-JUTSU.wav",
@@ -148,7 +149,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "1D3F",
-        flags: dhcrit_insta_regex,
+        flags: dhcrit_regex,
         capture: false,
       }),
       sound: "../../user/wav/south-park-lets-fighting-love-wonderful-penis.wav",
@@ -162,7 +163,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "5F41",
-        flags: dhcrit_insta_regex,
+        flags: dhcrit_regex,
         capture: false,
       }),
       sound: "../../user/wav/SpookySlice.wav",
@@ -188,7 +189,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "4072",
-        flags: dhcrit_insta_regex,
+        flags: dhcrit_regex,
         capture: true,
       }),
       condition: (data, matches) =>
@@ -204,7 +205,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "407B",
-        flags: dhcrit_insta_regex,
+        flags: dhcrit_regex,
         capture: false,
       }),
       sound: "../../user/wav/KonoSuba-Megumin-Explosion.wav",
