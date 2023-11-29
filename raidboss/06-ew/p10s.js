@@ -8,7 +8,7 @@ Options.Triggers.push({
       id: "P10S Ultima 14s",
       regex: /Ultima/i,
       beforeSeconds: 14,
-      sound: "../../user/wav/FFXIV_Ultima.wav",
+      sound: "../../user/wav/FFXIV_UnleashUltima.wav",
       soundVolume: 0.5,
       options: {
         SoundAlert: true,
