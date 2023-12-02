@@ -7,7 +7,7 @@ Options.Triggers.push({
     {
       id: "P10S Ultima 14s",
       regex: /Ultima/i,
-      beforeSeconds: 14,
+      beforeSeconds: 12,
       sound: "../../user/wav/FFXIV_UnleashUltima.wav",
       soundVolume: 0.5,
       options: {
@@ -48,7 +48,10 @@ Options.Triggers.push({
       netRegex: { id: "00F2", source: "Pand\u00e6monium" },
       delaySeconds: 0.5,
       suppressSeconds: 5,
-      tts: (data) => data.dividingWingsTethers.join(" and ") + " have a tether",
+      tts: (data) =>
+        data.dividingWingsTethers
+          .map((name) => data.ShortName(name))
+          .join(" and ") + " have a tether",
       options: {
         SpeechAlert: true,
       },
@@ -75,7 +78,9 @@ Object.assign(Options.PerTriggerOptions, {
   },
   "P10S Pandaemoniac Meltdown Stack": {
     SpeechAlert: true,
-    TTSText: (data) => data.meltdownSpreads.join(" and ") + " spread",
+    TTSText: (data) =>
+      data.meltdownSpreads.map((name) => data.ShortName(name)).join(" and ") +
+      " spread",
   },
   "P10S Daemoniac Bonds First": {
     SpeechAlert: true,
