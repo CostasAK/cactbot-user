@@ -223,7 +223,7 @@ Options.Triggers.push({
         ability: raise_ability,
         capture: true,
       }),
-      sound:
+      sound: () =>
         "../../user/wav/" +
         Options.UserFunctions.random_array_element([
           "ImInDanger",
@@ -244,7 +244,7 @@ Options.Triggers.push({
         ability: raise_ability,
         capture: true,
       }),
-      sound:
+      sound: () =>
         "../../user/wav/Kali2022-01-10/Recording_" +
         Options.UserFunctions.random_array_element(["0", "4", "5", "7"]) +
         ".wav",
