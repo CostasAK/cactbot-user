@@ -20,13 +20,13 @@ Options.PlayerNicks = {
 };
 Options.TransformTts = (tts) =>
   tts
-    .replace(/\bTali\b/gi, "Lamora")
+    .replace(/\bTali\b/gi, "T-Dog")
     .replace(/\bShiroe\b/gi, "Shihro")
-    .replace(/\bMarielle\b/gi, "Mari")
+    .replace(/\bMarielle\b/gi, "Marry")
     .replace(/\bTymo\b/gi, "Timtim")
     .replace(/\bKrato\b/gi, "Kraato")
     .replace(/\bSeuny\b/gi, "Sunny")
-    .replace(/\bKali\b/gi, "Ketchup")
+    .replace(/\bKali\b/gi, "Big K")
     .replace(/\b => \b/gi, " then ")
     .replace(/\b \+ \b/gi, " and ")
     .replace(/\bNW\b/gi, "1")
