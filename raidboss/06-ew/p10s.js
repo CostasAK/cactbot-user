@@ -69,7 +69,13 @@ Object.assign(Options.PerTriggerOptions, {
     SoundOverride: "../../user/wav/captain-america-get-away.wav",
     VolumeOverride: 1,
   },
+  "P10S Pandaemoniac Pillars": {
+    SpeechAlert: true,
+  },
   "P10S Pandaemoniac Turrets": {
+    SpeechAlert: true,
+  },
+  "P10S Silkspit": {
     SpeechAlert: true,
   },
   "P9S Archaic Demolish": {
