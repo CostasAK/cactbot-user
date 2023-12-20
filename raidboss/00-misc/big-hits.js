@@ -40,7 +40,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "6496",
-        flags: dhcrit_regex,
+        flags: dh_or_crit_regex,
         capture: false,
       }),
       sound: "../../user/wav/anime-wow-sound-effect.wav",
@@ -68,7 +68,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         source: "Esteem",
-        flags: dhcrit_regex,
+        flags: dh_or_crit_regex,
         capture: false,
       }),
       sound: "../../user/wav/Edgy!.wav",
@@ -82,7 +82,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "4097",
-        flags: dhcrit_regex,
+        flags: dh_or_crit_regex,
         capture: false,
       }),
       sound: "../../user/wav/anime-wow-sound-effect.wav",
@@ -96,7 +96,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         id: "1D11",
-        flags: dhcrit_regex,
+        flags: dh_or_crit_regex,
         capture: false,
       }),
       sound: "../../user/wav/Independence Day Welcome to Earth.wav",
