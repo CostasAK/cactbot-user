@@ -7,7 +7,7 @@ const unstoppable_sounds = [
   "UT2k4-Female-Unstoppable.wav",
   "UT2k4-Male-Unstoppable.wav",
 ];
-const invincible_sounds = [
+const invulnerable_sounds = [
   "UT2k4-Female-Invulnerable.wav",
   "UT2k4-Male-Invulnerable.wav",
 ];
@@ -90,7 +90,8 @@ Options.Triggers.push({
         capture: true,
       }),
       condition: (data, matches) => data.party.inParty(matches.source),
-      sound: () => "../../user/wav/" + random_array_element(invincible_sounds),
+      sound: () =>
+        "../../user/wav/" + random_array_element(invulnerable_sounds),
       soundVolume: 0.71,
       options: {
         SoundAlert: true,
