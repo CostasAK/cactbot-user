@@ -68,7 +68,7 @@ Options.Triggers.push({
       type: "Ability",
       netRegex: NetRegexes.ability({
         source: "Esteem",
-        flags: dh_or_crit_regex,
+        flags: dhcrit_regex,
         capture: false,
       }),
       sound: "../../user/wav/Edgy!.wav",
