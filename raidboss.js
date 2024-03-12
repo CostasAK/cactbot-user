@@ -26,7 +26,7 @@ Options.TransformTts = (tts) =>
     .replace(/\bTymo\b/gi, "Timmy")
     .replace(/\bKrato\b/gi, "Kraato")
     .replace(/\bSeuny\b/gi, "Sunny")
-    .replace(/\bKali\b/gi, "Kalium")
+    .replace(/\bKali\b/gi, "Kel'Thuzaahd")
     .replace(/\b => \b/gi, " then ")
     .replace(/\b \+ \b/gi, " and ")
     .replace(/\bNW\b/gi, "1")
